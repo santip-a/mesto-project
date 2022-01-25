@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mesto</title>
+    <link rel="shortcut icon" href="./images/logo/logo___icon.png">
+    <link rel="stylesheet" href="./styles/index.css">
+</head>
+<body class="body">
+
+  <div class="page">
+    <header class="header page__position">
+      <img class="header__logo" src="./images/logo/logo-white.svg" alt="Логотип Mesto.">
+      <!-- <hr class="header__line"> -->
+    </header>
+
+    <main class="content page__position">
+
+      <section class="profile">
+        <img class="profile__avatar" src="./images/avatar.jpg" alt="Аватар.">
+        <div class="profile__info">
+          <h1 class="profile__title">Жак-Ив Кусто<button class="profile__buttom-info" type="button"></button></h1>
+          <p class="profile__subtitle">Исследователь океана</p>
+        </div>
+        <button class="profile__buttom-add"></button>
+      </section>
+
+      <section class="elements">
+        <div class="element">
+          <img class="element__image" src="./images/kamchatka.jpg" alt="Вулкан на Камчатки.">
+          <div class="element__title">
+            <h2 class="element__text">Камчатка</h2>
+            <button class="element__heart "></button> <!-- element__heart_active -->
+          </div>
+        </div>
+        <div class="element">
+          <img class="element__image" src="./images/gelendjig.jpg" alt="Берег Геленджика.">
+          <div class="element__title">
+            <h2 class="element__text">Геленджик</h2>
+            <button class="element__heart"></button>
+          </div>
+        </div>
+        <div class="element">
+          <img class="element__image" src="./images/kivach.jpg" alt="Водопад Кавач.">
+          <div class="element__title">
+            <h2 class="element__text">Кивач</h2>
+            <button class="element__heart"></button>
+          </div>
+        </div>
+        <div class="element">
+          <img class="element__image" src="./images/sayani.jpg" alt="горы Саяны.">
+          <div class="element__title">
+            <h2 class="element__text">Саяны</h2>
+            <button class="element__heart"></button>
+          </div>
+        </div>
+        <div class="element">
+          <img class="element__image" src="./images/stolbi.jpg" alt="Ленские столбы.">
+          <div class="element__title">
+            <h2 class="element__text">Ленские столбы на реке лена</h2>
+            <button class="element__heart"></button>
+          </div>
+        </div>
+        <div class="element">
+          <img class="element__image" src="./images/valday.jpg" alt="Остров на Валдае.">
+          <div class="element__title">
+            <h2 class="element__text">Валдай</h2>
+            <button class="element__heart"></button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer page__position">
+      <p class="footer__text">&copy; 2020 Mesto Russia</p>
+    </footer>
+  </div>
+
+
+  <form class="popup ">  <!-- popup_opened  -->
+    <div class="popup__container">
+      <h2 class="popup__title">Редактировать профиль</h2>
+      <input class="popup__input " type="text" name="name" placeholder="Жак-Ив Кусто" required>
+      <input class="popup__input popup__input_last" type="text" name="character" placeholder="Исследователь океана" required>
+      <button class="popup__button" type="submit">Сохранить</button>
+      <button class="popup__button-сlose"></button>
+    </div>
+  </form>
+
+  <form class="popup  ">  <!-- popup_opened  -->
+    <div class="popup__container">
+      <h2 class="popup__title">Редактировать профиль</h2>
+      <input class="popup__input " type="text" name="name" placeholder="Жак-Ив Кусто" required>
+      <input class="popup__input popup__input_last" type="text" name="character" placeholder="Исследователь океана" required>
+      <button class="popup__button" type="submit">Сохранить</button>
+      <button class="popup__button-сlose"></button>
+    </div>
+  </form>
+
+
+</body>
+</html>
