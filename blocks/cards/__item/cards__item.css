@@ -1,4 +1,6 @@
-.element {
+.cards__item {
+  padding: 0;
+  margin: 0;
   max-width: 282px;
   background-color: #fff;
   border-radius: 10px;

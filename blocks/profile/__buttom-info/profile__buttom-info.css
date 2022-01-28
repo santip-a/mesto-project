@@ -17,10 +17,11 @@
   transition: opacity .3s ease;
 }
 
-@media screen and (max-width: 540px) {
+@media screen and (max-width: 375px) {
   .profile__buttom-info {
     width: 18px;
     height: 18px;
+    background-size: 7.5px;
     margin-left: 10px;
   }
 }

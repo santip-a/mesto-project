@@ -23,52 +23,54 @@
           <h1 class="profile__title">Жак-Ив Кусто<button class="profile__buttom-info" type="button"></button></h1>
           <p class="profile__subtitle">Исследователь океана</p>
         </div>
-        <button class="profile__buttom-add"></button>
+        <button class="profile__buttom-add" type="button"></button>
       </section>
 
       <section class="elements">
-        <div class="element">
-          <img class="element__image" src="./images/kamchatka.jpg" alt="Вулкан на Камчатки.">
-          <div class="element__title">
-            <h2 class="element__text">Камчатка</h2>
-            <button class="element__heart "></button> <!-- element__heart_active -->
-          </div>
-        </div>
-        <div class="element">
-          <img class="element__image" src="./images/gelendjig.jpg" alt="Берег Геленджика.">
-          <div class="element__title">
-            <h2 class="element__text">Геленджик</h2>
-            <button class="element__heart"></button>
-          </div>
-        </div>
-        <div class="element">
-          <img class="element__image" src="./images/kivach.jpg" alt="Водопад Кавач.">
-          <div class="element__title">
-            <h2 class="element__text">Кивач</h2>
-            <button class="element__heart"></button>
-          </div>
-        </div>
-        <div class="element">
-          <img class="element__image" src="./images/sayani.jpg" alt="горы Саяны.">
-          <div class="element__title">
-            <h2 class="element__text">Саяны</h2>
-            <button class="element__heart"></button>
-          </div>
-        </div>
-        <div class="element">
-          <img class="element__image" src="./images/stolbi.jpg" alt="Ленские столбы.">
-          <div class="element__title">
-            <h2 class="element__text">Ленские столбы на реке лена</h2>
-            <button class="element__heart"></button>
-          </div>
-        </div>
-        <div class="element">
-          <img class="element__image" src="./images/valday.jpg" alt="Остров на Валдае.">
-          <div class="element__title">
-            <h2 class="element__text">Валдай</h2>
-            <button class="element__heart"></button>
-          </div>
-        </div>
+        <ul class=cards>
+          <li class="cards__item">
+            <img class="cards__image" src="./images/kamchatka.jpg" alt="Вулкан на Камчатки.">
+            <div class="cards__title">
+              <h2 class="cards__text">Камчатка</h2>
+              <button class="cards__heart " type="button"></button>   <!-- cards__heart_active -->
+            </div>
+          </li>
+          <li class="cards__item">
+            <img class="cards__image" src="./images/gelendjig.jpg" alt="Берег Геленджика.">
+            <div class="cards__title">
+              <h2 class="cards__text">Геленджик</h2>
+              <button class="cards__heart" type="button"></button>
+            </div>
+          </li>
+          <li class="cards__item">
+            <img class="cards__image" src="./images/kivach.jpg" alt="Водопад Кавач.">
+            <div class="cards__title">
+              <h2 class="cards__text">Кивач</h2>
+              <button class="cards__heart" type="button"></button>
+            </div>
+          </li>
+          <li class="cards__item">
+            <img class="cards__image" src="./images/sayani.jpg" alt="горы Саяны.">
+            <div class="cards__title">
+              <h2 class="cards__text">Саяны</h2>
+              <button class="cards__heart" type="button"></button>
+            </div>
+          </li>
+          <li class="cards__item">
+            <img class="cards__image" src="./images/stolbi.jpg" alt="Ленские столбы.">
+            <div class="cards__title">
+              <h2 class="cards__text">Ленские столбы на реке лена</h2>
+              <button class="cards__heart" type="button"></button>
+            </div>
+          </li>
+          <li class="cards__item">
+            <img class="cards__image" src="./images/valday.jpg" alt="Остров на Валдае.">
+            <div class="cards__title">
+              <h2 class="cards__text">Валдай</h2>
+              <button class="cards__heart" type="button"></button>
+            </div>
+          </li>
+        </ul>
       </section>
     </main>
 
@@ -78,30 +80,17 @@
   </div>
 
 
-  <div class="popup  popup_opened">  <!-- popup_opened  -->
+  <div class="popup">  <!-- popup_opened  -->
     <div class="popup__container">
       <h2 class="popup__title">Редактировать профиль</h2>
-      <form class="form">
+      <form class="form" name="form_data">
         <input class="form__input " type="text" name="name" placeholder="Жак-Ив Кусто" required>
-        <input class="form__input form__input_last" type="text" name="character" placeholder="Исследователь океана" required>
+        <input class="form__input form__input_item_last" type="text" name="character" placeholder="Исследователь океана" required>
         <button class="form__button" type="submit">Сохранить</button>
       </form>
-      <button class="popup__button-сlose"></button>
+      <button class="popup__button-сlose" type="button"></button>
     </div>
   </div>
-
-  <div class="popup  ">  <!-- popup_opened  -->
-    <div class="popup__container">
-      <h2 class="popup__title">Редактировать профиль</h2>
-      <form class="form">
-        <input class="form__input " type="text" name="name" placeholder="Жак-Ив Кусто" required>
-        <input class="form__input form__input_last" type="text" name="character" placeholder="Исследователь океана" required>
-        <button class="form__button" type="submit">Сохранить</button>
-      </form>
-      <button class="popup__button-сlose"></button>
-    </div>
-  </div>
-
 
 </body>
 </html>

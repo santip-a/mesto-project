@@ -2,14 +2,17 @@
   display: flex;
   padding-top: 40px;
   align-items: center;
-  flex-wrap: wrap;
 }
 
 
+@media screen and (max-width: 700px) {
+  .profile {
+    flex-direction: column;
+  }
+}
 
-@media screen and (max-width: 540px) {
+@media screen and (max-width: 618px) {
   .profile {
     padding-top: 42px;
-    justify-content: center;
   }
 }
