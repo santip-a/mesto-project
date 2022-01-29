@@ -17,4 +17,4 @@
 
 **Ссылка на проект**
 
-* https://santip-a.github.io/mesto-project/
+* https://santip-a.github.io/mesto-project/index.html
