@@ -9,6 +9,7 @@
   box-sizing: border-box;
   border-radius: 2px;
   margin-left: auto;
+  flex-shrink: 0;
 }
 
 .profile__buttom-add:hover {

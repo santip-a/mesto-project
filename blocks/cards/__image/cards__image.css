@@ -5,3 +5,7 @@
   object-fit: cover;
   background: #C4C4C4;
 }
+
+.cards__image:hover {
+  cursor: pointer;
+}
