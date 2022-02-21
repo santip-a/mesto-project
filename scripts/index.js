@@ -1,9 +1,9 @@
+const popupProfile = document.querySelector('.popup_type_profile'); // попап редактирования профиля
 const buttonOpenPopupProfile = document.querySelector('.profile__buttom-info'); // кнопка радактирования профиля
-const buttonSavePopupProfile = document.querySelector('.popup_type_profile'); // попап редактирования профиля
-const buttonClosePopupProfile = buttonSavePopupProfile.querySelector('.popup__button-сlose'); // кнопка закрытия попапа редактирования профиля
+const buttonClosePopupProfile = popupProfile.querySelector('.popup__button-сlose'); // кнопка закрытия попапа редактирования профиля
 
-const nameInputPopupProfile = buttonSavePopupProfile.querySelector('.form__input');  // поле ввода имени в попап редактирования профиля
-const jobInputPopupProfile = buttonSavePopupProfile.querySelector('.form__input_item_last'); // поле ввода работы в попап редактирования профиля
+const nameInputPopupProfile = popupProfile.querySelector('.form__input');  // поле ввода имени в попап редактирования профиля
+const jobInputPopupProfile = popupProfile.querySelector('.form__input_item_last'); // поле ввода работы в попап редактирования профиля
 
 const userName = document.querySelector('.profile__title');  // элемент "Пользователь"
 const userJob = document.querySelector('.profile__subtitle');  // элемент "Профессия"
@@ -12,8 +12,8 @@ const openPopup = function(pop) {pop.classList.add('popup_opened')}; // доба
 const closePopup = function(pop) {pop.classList.remove('popup_opened')}  // закрытие popup окна
 
 // Объекты для попапа добавления карточки
-const buttonOpenPopupAddCard = document.querySelector('.profile__buttom-add');  // кнопка открытия попапа новой карточки
 const popupAddCard = document.querySelector('.popup_type_addCard');  // попап добавления новой карточки
+const buttonOpenPopupAddCard = document.querySelector('.profile__buttom-add');  // кнопка открытия попапа новой карточки
 const buttonClosePopupAddCard = popupAddCard.querySelector('.popup__button-сlose'); // кнопка закрытия попапа новой карточки
 const formPopupAddCard = popupAddCard.querySelector('.form');
 const inputNamePopupAddCard = popupAddCard.querySelector('.form__input');  // поле ввода названия карточки в попапе
@@ -59,7 +59,7 @@ const initialCards = [
 
 // Функция открытие модального окна профиля
 function openProfile() {
-  openPopup(buttonSavePopupProfile);
+  openPopup(popupProfile);
   nameInputPopupProfile.value = userName.textContent;
   jobInputPopupProfile.value = userJob.textContent;
 }
@@ -69,7 +69,7 @@ function saveProfile (evt) {
   evt.preventDefault();
   userName.textContent = nameInputPopupProfile.value;
   userJob.textContent = jobInputPopupProfile.value;
-  closePopup(buttonSavePopupProfile);
+  closePopup(popupProfile);
 }
 
 // функция открытия картинки
@@ -123,8 +123,8 @@ function saveNewCard (evt) {
 }
 
 buttonOpenPopupProfile.addEventListener('click', openProfile); // кнопка открытия popap профиля
-buttonClosePopupProfile.addEventListener('click', function() {closePopup(buttonSavePopupProfile)}); // кнопка закрытия popup профиля
-buttonSavePopupProfile.addEventListener('submit', saveProfile);  // кнопка сохранения popup профиля
+buttonClosePopupProfile.addEventListener('click', function() {closePopup(popupProfile)}); // кнопка закрытия popup профиля
+popupProfile.addEventListener('submit', saveProfile);  // кнопка сохранения popup профиля
 
 buttonOpenPopupAddCard.addEventListener('click', openPopupAddCard);  //  кнопка открытие попапа новой карточки
 buttonClosePopupAddCard.addEventListener('click', function() {closePopup(popupAddCard)}); // кнопка закрытие попапа новой карточки
