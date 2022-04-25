@@ -1,5 +1,5 @@
-@import url(./normalize.css);
-@import url(./fonts.css);
+@import url(../vendor/normalize.css);
+@import url(../vendor/fonts.css);
 @import url(../blocks/body/body.css);
 
 @import url(../blocks/page/page.css);
@@ -44,10 +44,11 @@
 @import url(../blocks/popup/_type/popup_type_openImegeCard.css);
 
 @import url(../blocks/form/__input/form__input.css);
-@import url(../blocks/form/__input/_item/form__input_item_last.css);
+@import url(../blocks/form/__input/_type/form__input_type_error.css);
 @import url(../blocks/form/__button/form__button.css);
-
-
+@import url(../blocks/form/__button/_disabled/form__button_disabled.css);
+@import url(../blocks/form/__input-error/form__input-error.css);
+@import url(../blocks/form/__input-error/_type/form__input-error_type_active.css);
 
 
 

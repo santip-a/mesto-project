@@ -6,19 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mesto</title>
     <link rel="shortcut icon" href="./images/logo/logo___icon.png">
-    <link rel="stylesheet" href="./styles/index.css">
 </head>
 <body class="body">
 
   <div class="page">
     <header class="header page__position">
-      <img class="header__logo" src="./images/logo/logo-white.svg" alt="Логотип Mesto.">
+      <img class="header__logo" src="<%=require('./images/logo/logo-white.svg')%>" alt="Логотип Mesto.">
     </header>
 
     <main class="content page__position">
 
       <section class="profile">
-        <img class="profile__avatar" src="./images/avatar.jpg" alt="Аватарка.">
+        <img class="profile__avatar" src="<%=require('./images/avatar.jpg')%>" alt="Аватарка.">
         <div class="profile__info">
           <div class="profile__line">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
@@ -45,10 +44,12 @@
   <div class="popup  popup_type_profile">  <!-- popup_opened  -->
     <div class="popup__container">
       <h2 class="popup__title">Редактировать профиль</h2>
-      <form class="form" name="form_data">
-        <input class="form__input " type="text" name="name" placeholder="Имя" required value="">
-        <input class="form__input form__input_item_last" type="text" name="character" placeholder="О себе" required value="">
-        <button class="form__button" type="submit">Сохранить</button>
+      <form class="form" name="form_profile" novalidate>
+        <input id="input-name" class="form__input" type="text" name="name" placeholder="Имя" required value="" minlength="2" maxlength="40">
+        <span class="input-name-error form__input-error">error</span>
+        <input id="input-character" class="form__input" type="text" name="character" placeholder="О себе" required value="" minlength="2" maxlength="200">
+        <span class="input-character-error form__input-error">error</span>
+        <button class="form__button form__button_disabled" type="submit" disabled>Сохранить</button>
       </form>
       <button class="popup__button-сlose" type="button"></button>
     </div>
@@ -57,18 +58,20 @@
   <div class="popup popup_type_addCard">  <!-- popup_opened -->
     <div class="popup__container">
       <h2 class="popup__title">Новое место</h2>
-      <form class="form" name="form_data">
-        <input class="form__input " type="text" name="name" placeholder="Название" required >
-        <input class="form__input form__input_item_last" type="text" name="character" placeholder="Ссылка на картинку" required >
-        <button class="form__button" type="submit">Создать</button>
+      <form class="form" name="form_addCard" novalidate>
+        <input id="input-title" class="form__input " type="text" name="title" placeholder="Название" required minlength="2" maxlength="30">
+        <span class="input-title-error form__input-error">error</span>
+        <input id="input-link" class="form__input" type="url" name="link" placeholder="Ссылка на картинку" required >
+        <span class="input-link-error form__input-error">error</span>
+        <button class="form__button form__button_disabled" type="submit" disabled>Создать</button>
       </form>
       <button class="popup__button-сlose" type="button"></button>
     </div>
   </div>
 
-  <div class="popup popup_type_openImegeCard ">  <!-- popup_opened -->
+  <div class="popup popup_type_openImegeCard" >  <!-- popup_opened -->
     <div class="popup__container-openImegeCard">
-      <img class="popup__img" src="_" alt="картинка">
+      <img class="popup__img" src="#" alt="картинка">
       <button class="popup__button-сlose" type="button"></button>
       <h2 class="popup__title-openImegeCard">Картинка</h2>
     </div>
@@ -76,15 +79,14 @@
 
   <template id="templateCards">
     <li class="cards__item">
-      <img class="cards__image" src="./images/kamchatka.jpg" alt="Вулкан на Камчатки.">
+      <img class="cards__image" src="#" alt="Вулкан на Камчатки.">
       <div class="cards__title">
         <h2 class="cards__text">Камчатка</h2>
         <button class="cards__heart " type="button"></button> <!-- cards__heart_active -->
       </div>
-      <img class="cards__trash" src="./images/Trash.svg" alt="Корзина.">
+      <img class="cards__trash" src= "<%=require('./images/Trash.svg')%>"  alt="Корзина.">
     </li>
   </template>
 
-  <script src="./scripts/index.js"></script>
 </body>
 </html>
