@@ -45,13 +45,12 @@ export function enableValidation(formConfig) {
   formList.forEach((formElement) => {
     formElement.addEventListener('submit', (evt) => {
       evt.preventDefault();
-      setToogleButton(formElement, formConfig);
     });
     setEventListeners(formElement, formConfig);
   });
 };
 
-function setToogleButton(formElement, formConfig, isActive = false) {
+export function setToogleButton(formElement, formConfig, isActive = false) {
   const button = formElement.querySelector(formConfig.submitButtonSelector);
   if (isActive) {
     button.classList.remove(formConfig.submitButtonDisabledClass);

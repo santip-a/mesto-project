@@ -2,12 +2,12 @@ import '../pages/index.css';
 
 import {enableValidation, validityFormConfig} from './validate.js';
 import {popups, buttonOpenPopupProfile, formPopupProfile, buttonOpenPopupAddCard, formPopupAddCard,
-    openProfile, saveProfile, openPopupAddCard} from './modal.js';
+    openProfile, saveProfile, openPopupAddCard, changeContentProfile, buttonOpenPopupEditAvatar,
+    openPopupEditAvatar, formPopupAvatar, saveAvatar} from './modal.js';
 import {closePopup,} from './utils.js';
-import {saveNewCard} from './card.js'
+import {saveNewCard} from './card.js';
 
-
-
+import {getProfile} from './api.js';
 
 enableValidation(validityFormConfig);
 
@@ -17,6 +17,9 @@ formPopupProfile.addEventListener('submit', saveProfile);  // кнопка со�
 
 buttonOpenPopupAddCard.addEventListener('click', openPopupAddCard);  //  кнопка открытие попапа новой карточки
 formPopupAddCard.addEventListener('submit', saveNewCard); // сохранение новой карточки
+
+buttonOpenPopupEditAvatar.addEventListener('click', openPopupEditAvatar)
+formPopupAvatar.addEventListener('submit', saveAvatar)
 
 // закрытие попапа по оверлею или крестику
 popups.forEach((popup) => {
@@ -29,6 +32,16 @@ popups.forEach((popup) => {
       }
   })
 })
+
+// получаем данные профайла
+getProfile()
+.then ((data) => {
+  changeContentProfile(data);
+})
+
+
+
+
 
 
 

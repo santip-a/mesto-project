@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mesto</title>
-    <link rel="shortcut icon" href="<%=require('./images/logo/logo___icon.png')%>">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mesto</title>
+  <link rel="shortcut icon" href="<%=require('./images/logo/logo___icon.png')%>">
 </head>
+
 <body class="body">
 
   <div class="page">
@@ -17,7 +19,14 @@
     <main class="content page__position">
 
       <section class="profile">
-        <img class="profile__avatar" src="<%=require('./images/avatar.jpg')%>" alt="Аватарка.">
+
+        <div class="profile__image">
+          <img class="profile__avatar" src="#" alt="Аватарка.">
+          <button class="profile__edit-avatar" type="button">
+            <img class="profile__edit-image" src="<%=require('./images/avatar-edit.svg')%>" alt="Аватарка.">
+          </button>
+        </div>
+
         <div class="profile__info">
           <div class="profile__line">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
@@ -41,13 +50,16 @@
   </div>
 
 
-  <div class="popup  popup_type_profile">  <!-- popup_opened  -->
+  <div class="popup  popup_type_profile">
+    <!-- popup_opened  -->
     <div class="popup__container">
       <h2 class="popup__title">Редактировать профиль</h2>
       <form class="form" name="form_profile" novalidate>
-        <input id="input-name" class="form__input" type="text" name="name" placeholder="Имя" required value="" minlength="2" maxlength="40">
+        <input id="input-name" class="form__input" type="text" name="name" placeholder="Имя" required value=""
+          minlength="2" maxlength="40">
         <span class="input-name-error form__input-error">error</span>
-        <input id="input-character" class="form__input" type="text" name="character" placeholder="О себе" required value="" minlength="2" maxlength="200">
+        <input id="input-character" class="form__input" type="text" name="character" placeholder="О себе" required
+          value="" minlength="2" maxlength="200">
         <span class="input-character-error form__input-error">error</span>
         <button class="form__button form__button_disabled" type="submit" disabled>Сохранить</button>
       </form>
@@ -55,13 +67,15 @@
     </div>
   </div>
 
-  <div class="popup popup_type_addCard">  <!-- popup_opened -->
+  <div class="popup popup_type_addCard">
+    <!-- popup_opened -->
     <div class="popup__container">
       <h2 class="popup__title">Новое место</h2>
       <form class="form" name="form_addCard" novalidate>
-        <input id="input-title" class="form__input " type="text" name="title" placeholder="Название" required minlength="2" maxlength="30">
+        <input id="input-title" class="form__input " type="text" name="title" placeholder="Название" required
+          minlength="2" maxlength="30">
         <span class="input-title-error form__input-error">error</span>
-        <input id="input-link" class="form__input" type="url" name="link" placeholder="Ссылка на картинку" required >
+        <input id="input-link" class="form__input" type="url" name="link" placeholder="Ссылка на картинку" required>
         <span class="input-link-error form__input-error">error</span>
         <button class="form__button form__button_disabled" type="submit" disabled>Создать</button>
       </form>
@@ -69,7 +83,30 @@
     </div>
   </div>
 
-  <div class="popup popup_type_openImegeCard" >  <!-- popup_opened -->
+  <div class="popup popup_type_DelCard">
+    <!-- popup_opened -->
+    <div class="popup__container">
+      <h2 class="popup__title">Вы уверены?</h2>
+      <button class="form__button " type="submit" >Да</button>
+      <button class="popup__button-сlose" type="button"></button>
+    </div>
+  </div>
+
+  <div class="popup popup_type_editAvatar">  <!-- popup_opened -->
+    <div class="popup__container">
+      <h2 class="popup__title">Обновить аватар</h2>
+      <form class="form" name="form_editAvatar" novalidate>
+        <input id="input-avatarLink" class="form__input" type="url" name="linkAvatar" placeholder="Ссылка на картинку" required>
+        <span class="input-avatarLink-error form__input-error">error</span>
+        <button class="form__button form__button_disabled" type="submit">Сохранить</button>
+      </form>
+      <button class="popup__button-сlose" type="button"></button>
+    </div>
+  </div>
+
+
+  <div class="popup popup_type_openImegeCard">
+    <!-- popup_opened -->
     <div class="popup__container-openImegeCard">
       <img class="popup__img" src="#" alt="картинка">
       <button class="popup__button-сlose" type="button"></button>
@@ -82,11 +119,16 @@
       <img class="cards__image" src="#" alt="Вулкан на Камчатки.">
       <div class="cards__title">
         <h2 class="cards__text">Камчатка</h2>
-        <button class="cards__heart " type="button"></button> <!-- cards__heart_active -->
+        <div class="cards__likes">
+          <button class="cards__heart " type="button"></button> <!-- cards__heart_active -->
+          <p class="cards__like">0</p>
+        </div>
       </div>
-      <img class="cards__trash" src= "<%=require('./images/Trash.svg')%>"  alt="Корзина.">
+      <img class="cards__trash cards__trash_hidden" src="<%=require('./images/Trash.svg')%>" alt="Корзина.">
+
     </li>
   </template>
 
 </body>
+
 </html>
