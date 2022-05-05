@@ -7,13 +7,13 @@ const config = {
 }
 
 // проверка запроса
-const checkGet = (ee) => {
-    if (ee.ok) {
-      return ee.json()
-    }
-    else {
-      return Promise.reject(ee.status)
-    }
+const checkGet = (res) => {
+  if (res.ok) {
+    return res.json()
+  }
+  else {
+    return Promise.reject(res.status)
+  }
 }
 
 // запрос карточек
@@ -22,10 +22,6 @@ export const getCards = () => {
     headers: config.headers
   })
   .then ((res) => checkGet(res))
-
-  .catch((err) => {
-    console.log(`Ошибка: ${err}`)
-  })
 }
 
 
@@ -35,10 +31,6 @@ export const getProfile = () => {
     headers: config.headers
   })
   .then ((res) => checkGet(res))
-
-  .catch((err) => {
-    console.log(`Ошибка: ${err}`)
-  })
 }
 
 
@@ -51,14 +43,8 @@ export const changeProfile = (nameProfile, aboutProfile) => {
       name: nameProfile,
       about: aboutProfile
     })
-  },
-  
-  )
-  .then ((res) => checkGet(res))
-
-  .catch((err) => {
-    console.log(`Ошибка: ${err}`)
   })
+  .then ((res) => checkGet(res))
 }
 
 
@@ -71,14 +57,8 @@ export const postAddNewCard = (nameCard, linkCard) => {
       name: nameCard,
       link: linkCard
     })
-  },
-
-  )
-  .then ((res) => checkGet(res))
-
-  .catch((err) => {
-    console.log(`Ошибка: ${err}`)
   })
+  .then ((res) => checkGet(res))
 }
 
 
@@ -89,38 +69,26 @@ export const deleteCard = (idCard) => {
     headers: config.headers
   })
   .then ((res) => checkGet(res))
-
-  .catch((err) => {
-    console.log(`Ошибка: ${err}`)
-  })
 }
 
 
 // добавление количства лайков
-export const addLike = (idCard) => {
+export const requestAddLike = (idCard) => {
   return fetch(`${config.baseUrl}/cards/likes/${idCard}`, {
     method: 'PUT',
     headers: config.headers
   })
   .then ((res) => checkGet(res))
-
-  .catch((err) => {
-    console.log(`Ошибка: ${err}`)
-  })
 }
 
 
 // удаление лайка
-export const deleteLike = (idCard) => {
+export const requestDeleteLike = (idCard) => {
   return fetch(`${config.baseUrl}/cards/likes/${idCard}`, {
     method: 'DELETE',
     headers: config.headers
   })
   .then ((res) => checkGet(res))
-
-  .catch((err) => {
-    console.log(`Ошибка: ${err}`)
-  })
 }
 
 
@@ -134,10 +102,6 @@ export const changeAvatar = (link) => {
     })
   })
   .then ((res) => checkGet(res))
-
-  .catch((err) => {
-    console.log(`Ошибка: ${err}`)
-  })
 }
 
 

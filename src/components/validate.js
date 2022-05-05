@@ -5,18 +5,19 @@ export const validityFormConfig = {
   submitButtonSelector: '.form__button',
   submitButtonDisabledClass: 'form__button_disabled',
   inputErrorClass: 'form__input-error_type_active',
+  inputTypeErrorClass: 'form__input_type_error',
 }
 
 
 
 function showInputError(formElement, element, errorMessage, formConfig) {
-  element.classList.add('form__input_type_error');
+  element.classList.add(formConfig.inputTypeErrorClass);
   formElement.querySelector(`.${element.id}-error`).textContent = errorMessage;
   formElement.querySelector(`.${element.id}-error`).classList.add(formConfig.inputErrorClass);
 };
 
 function hideInputError(formElement, element, formConfig) {
-  element.classList.remove('form__input_type_error');
+  element.classList.remove(formConfig.inputTypeErrorClass);
   formElement.querySelector(`.${element.id}-error`).textContent = 'error';
   formElement.querySelector(`.${element.id}-error`).classList.remove(formConfig.inputErrorClass);
 };
