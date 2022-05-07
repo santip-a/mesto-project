@@ -1,13 +1,5 @@
-import {openImegaCard, openPopupDelCard, idProfile, requestAddLikeCard, requestDelLikeCard} from './index.js'
-
-
-export const popupAddCard = document.querySelector('.popup_type_addCard');  // попап добавления новой карточки
-
-
-const allCards = document.querySelector('.cards');
-const templateCards = document.querySelector('#templateCards').content;
-
-
+import {openImegaCard, openPopupDelCard, idProfile} from './index.js'
+import {allCards, templateCards} from './utils.js'
 
 
 // функция удаления карточки
@@ -71,8 +63,7 @@ function createCard (elementCard, addLikeCard, delLikeCard) {
   return newCard;
 }
 
-// добавление карточек
-export function renderCard (elementCard) {
-  const card = createCard(elementCard, requestAddLikeCard, requestDelLikeCard);
+export function renderCard (elementCard, regAddLike, regDelLike) {
+  const card = createCard(elementCard, regAddLike, regDelLike);
   allCards.prepend(card);
 }

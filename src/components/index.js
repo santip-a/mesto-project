@@ -1,13 +1,13 @@
 import '../pages/index.css';
 
 import {enableValidation, validityFormConfig, setToogleButton} from './validate.js';
-import {loadingSubmit} from  './utils.js';
+import {loadingSubmit, popupAddCard} from  './utils.js';
 import {openPopup, closePopup,} from './modal.js';
-import {popupAddCard, delCard, renderCard, deleteLikeCard, putLikeCard} from './card.js';
+import {delCard, renderCard, deleteLikeCard, putLikeCard} from './card.js';
 import {getProfile, changeProfile, deleteCard, changeAvatar, postAddNewCard, getCards, requestAddLike, requestDeleteLike} from './api.js';
 
-
 export let idProfile = '';
+
 
 
 const buttonOpenPopupAddCard = document.querySelector('.profile__buttom-add');  // кнопка открытия попапа новой карточки
@@ -113,7 +113,6 @@ function openPopupAddCard () {
   openPopup(popupAddCard);
 }
 
-
 // функция открытия картинки
 export function openImegaCard (textImage, urlImage) {
   openPopup(popupImegeOpen);
@@ -123,9 +122,10 @@ export function openImegaCard (textImage, urlImage) {
 }
 
 
+
 export function openPopupDelCard(elem, idCardDel) {
   openPopup(popupDelCard);
-  buttonOkPopupDelCard.addEventListener('click', function() {
+  buttonOkPopupDelCard.addEventListener('click', function removeCard() {
     deleteCard(idCardDel)
       .then (() => {
       closePopup(popupDelCard);
@@ -134,28 +134,14 @@ export function openPopupDelCard(elem, idCardDel) {
       .catch((err) => {
         console.log(`Ошибка: ${err}`)
       })
+      this.removeEventListener('click', removeCard);
     })
 }
 
 
-// Функция сохранения новой карточки
-function saveNewCard (evt) {
-  const text = evt.target.querySelector('.form__button').textContent;
-  loadingSubmit(true, evt);
-  evt.preventDefault();
-  postAddNewCard(inputTitlePopupAddCard.value, inputLinkPopupAddCard.value)
-    .then ((data) => {
-      renderCard(data);
-      closePopup(popupAddCard);
-    })
-    .catch((err) => {
-      console.log(`Ошибка: ${err}`)
-    })
-    .finally(() => {loadingSubmit(false, evt, text)})
-}
 
 
-export const requestDelLikeCard = (cardId, heart, likes) => {
+const requestDelLikeCard = (cardId, heart, likes) => {
   requestDeleteLike(cardId)
   .then ((card) => {
     deleteLikeCard(card, likes, heart)
@@ -165,7 +151,7 @@ export const requestDelLikeCard = (cardId, heart, likes) => {
   })
 }
 
-export const requestAddLikeCard = (cardId, heart, likes) => {
+const requestAddLikeCard = (cardId, heart, likes) => {
   requestAddLike(cardId)
     .then ((card) => {
       putLikeCard(card, likes, heart)
@@ -176,18 +162,50 @@ export const requestAddLikeCard = (cardId, heart, likes) => {
 }
 
 
+
+
+
+// Функция сохранения новой карточки
+function saveNewCard (evt) {
+  const text = evt.target.querySelector('.form__button').textContent;
+  loadingSubmit(true, evt);
+  evt.preventDefault();
+  postAddNewCard(inputTitlePopupAddCard.value, inputLinkPopupAddCard.value)
+    .then ((data) => {
+      renderCard(data, requestAddLikeCard, requestDelLikeCard);
+      closePopup(popupAddCard);
+    })
+    .catch((err) => {
+      console.log(`Ошибка: ${err}`)
+    })
+    .finally(() => {loadingSubmit(false, evt, text)})
+}
+
+
+
+
+// Promise.all([getProfile(), getCards()])
+//   .then(([profile, data]) => {
+//     changeContentProfile(profile);
+//     data.forEach(function (item) {
+//       renderCard(item, requestAddLikeCard, requestDelLikeCard)
+//     });
+//   })
+//   .catch((err) => {
+//     console.log(`Ошибка: ${err}`)
+//   })
+
+
 Promise.all([getProfile(), getCards()])
   .then(([profile, data]) => {
     changeContentProfile(profile);
-    data.forEach(function (item) {
-      renderCard(item)
+    data.reverse().forEach(function (item) {
+      renderCard(item, requestAddLikeCard, requestDelLikeCard)
     });
   })
   .catch((err) => {
     console.log(`Ошибка: ${err}`)
   })
-
-
 
 
 enableValidation(validityFormConfig);
@@ -202,7 +220,7 @@ formPopupAddCard.addEventListener('submit', saveNewCard); // сохранени�
 buttonOpenPopupEditAvatar.addEventListener('click', openPopupEditAvatar)
 formPopupAvatar.addEventListener('submit', saveAvatar)
 
-// закрытие попапа по оверлею или крестику
+
 popups.forEach((popup) => {
   popup.addEventListener('mousedown', (evt) => {
       if (evt.target.classList.contains('popup_opened')) {
@@ -213,7 +231,5 @@ popups.forEach((popup) => {
       }
   })
 })
-
-
 
 
