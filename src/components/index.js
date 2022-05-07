@@ -6,8 +6,8 @@ import {openPopup, closePopup,} from './modal.js';
 import {delCard, renderCard, deleteLikeCard, putLikeCard} from './card.js';
 import {getProfile, changeProfile, deleteCard, changeAvatar, postAddNewCard, getCards, requestAddLike, requestDeleteLike} from './api.js';
 
-export let idProfile = '';
 
+let idProfile = '';// Функция обновления профиля
 
 
 const buttonOpenPopupAddCard = document.querySelector('.profile__buttom-add');  // кнопка открытия попапа новой карточки
@@ -48,13 +48,14 @@ const buttonOpenPopupEditAvatar = document.querySelector('.profile__edit-avatar'
 
 // ==========================
 
-// Функция обновления профиля
+
 const changeContentProfile = (profile) => {
   userName.textContent = (profile.name);
   userJob.textContent = (profile.about);
   userAvatar.src = (profile.avatar);
   idProfile = profile._id;
 }
+
 
 // Функция открытие модального окна профиля
 function openProfile() {
@@ -114,7 +115,7 @@ function openPopupAddCard () {
 }
 
 // функция открытия картинки
-export function openImegaCard (textImage, urlImage) {
+function openImegaCard (textImage, urlImage) {
   openPopup(popupImegeOpen);
   urlPopupImage.setAttribute('src', urlImage);
   urlPopupImage.setAttribute('alt', textImage);
@@ -123,7 +124,7 @@ export function openImegaCard (textImage, urlImage) {
 
 
 
-export function openPopupDelCard(elem, idCardDel) {
+function openPopupDelCard(elem, idCardDel) {
   openPopup(popupDelCard);
   buttonOkPopupDelCard.addEventListener('click', function removeCard() {
     deleteCard(idCardDel)
@@ -172,7 +173,7 @@ function saveNewCard (evt) {
   evt.preventDefault();
   postAddNewCard(inputTitlePopupAddCard.value, inputLinkPopupAddCard.value)
     .then ((data) => {
-      renderCard(data, requestAddLikeCard, requestDelLikeCard);
+      renderCard(data, requestAddLikeCard, requestDelLikeCard, openImegaCard, openPopupDelCard, idProfile);
       closePopup(popupAddCard);
     })
     .catch((err) => {
@@ -184,23 +185,11 @@ function saveNewCard (evt) {
 
 
 
-// Promise.all([getProfile(), getCards()])
-//   .then(([profile, data]) => {
-//     changeContentProfile(profile);
-//     data.forEach(function (item) {
-//       renderCard(item, requestAddLikeCard, requestDelLikeCard)
-//     });
-//   })
-//   .catch((err) => {
-//     console.log(`Ошибка: ${err}`)
-//   })
-
-
 Promise.all([getProfile(), getCards()])
   .then(([profile, data]) => {
     changeContentProfile(profile);
     data.reverse().forEach(function (item) {
-      renderCard(item, requestAddLikeCard, requestDelLikeCard)
+      renderCard(item, requestAddLikeCard, requestDelLikeCard, openImegaCard, openPopupDelCard, idProfile)
     });
   })
   .catch((err) => {

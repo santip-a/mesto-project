@@ -1,5 +1,4 @@
-import {openImegaCard, openPopupDelCard, idProfile} from './index.js'
-import {allCards, templateCards} from './utils.js'
+import {allCards, templateCards } from './utils.js'
 
 
 // функция удаления карточки
@@ -22,7 +21,7 @@ export function putLikeCard(card, likes, heart) {
 
 
 // Функция создания карточки
-function createCard (elementCard, addLikeCard, delLikeCard) {
+function createCard (elementCard, addLikeCard, delLikeCard, openImegaCard, openPopupDelCard, idProfile) {
   const newCard = templateCards.cloneNode(true);
   const imageNewCard = newCard.querySelector('.cards__image'); // элемент картинки в создоваемой карточке
   newCard.querySelector('.cards__text').textContent = elementCard.name;
@@ -63,7 +62,7 @@ function createCard (elementCard, addLikeCard, delLikeCard) {
   return newCard;
 }
 
-export function renderCard (elementCard, regAddLike, regDelLike) {
-  const card = createCard(elementCard, regAddLike, regDelLike);
+export function renderCard (elementCard, regAddLike, regDelLike, openImegaCard, openPopupDelCard, idProfile) {
+  const card = createCard(elementCard, regAddLike, regDelLike, openImegaCard, openPopupDelCard, idProfile);
   allCards.prepend(card);
 }
